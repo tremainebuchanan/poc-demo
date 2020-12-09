@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"
+      integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap");
+      body {
+        font-family: "Josefin Sans", sans-serif;
+      }
+      .page-container {
+        width: 380px;
+        height: auto;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+        padding: 24px;
+      }
+      h1,
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .dates:hover {
+        background-color: #00bcd4;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .active {
+        background-color: #00bcd4;
+        color: #ffffff;
+      }
+
+      #bp {
+        margin-bottom: 24px;
+      }
+
+      #general {
+        display: none;
+        margin-bottom: 24px;
+      }
+    </style>
+    <title>mHealth</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-container">
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <!-- <div class="level-item">
+              <a href="/"><i class="fas fa-caret-left"></i> Back</a>
+            </div> -->
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <a href="/">
+                <i class="fas fa-times fa-2x"></i>
+              </a>
+              
+            </div>
+          </div>
+        </nav>
+        <div style="margin-bottom: 32px">
+          <h1 class="title">Which measurement would you like to add?</h1>
+        </div>
+
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-right">
+                <div class="level-item">
+                  <p>Blood Glucose</p>
+                </div>
+              </div>
+              <div class="level-left">
+                <div class="level-item">
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-right">
+                <div class="level-item">
+                  <p>Blood Pressure</p>
+                </div>
+              </div>
+              <div class="level-left">
+                <div class="level-item">
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <a href="/input">
+          <div class="card" style="margin-bottom: 12px;">
+            <div class="card-content">
+              <div class="level is-mobile">
+                <div class="level-right">
+                  <div class="level-item">
+                    <p>Body Mass Index (BMI)</p>
+                  </div>
+                </div>
+                <div class="level-left">
+                  <div class="level-item">
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </a>
+       
+
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-right">
+                <div class="level-item">
+                  <p>Heart Rate</p>
+                </div>
+              </div>
+              <div class="level-left">
+                <div class="level-item">
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-right">
+                <div class="level-item">
+                  <p>Weight</p>
+                </div>
+              </div>
+              <div class="level-left">
+                <div class="level-item">
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-right">
+                <div class="level-item">
+                  <p>Height</p>
+                </div>
+              </div>
+              <div class="level-left">
+                <div class="level-item">
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- <div class="field" style="margin-bottom: 24px">
+          <label class="label">Reading Category</label>
+          <div class="control">
+            <div class="select">
+              <select id="categories">
+                <% for(var i = 0; i < categories.length; i++) { %>
+                <option
+                  value="<%= categories[i].id %>"
+                  onclick="getSelectedCategory()"
+                >
+                  <%= categories[i].label %>
+                </option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div id="bp">
+          <div class="field">
+            <label class="label">Systolic Value</label>
+            <input class="input" type="text" placeholder="" id="systolic" />
+          </div>
+
+          <div class="field">
+            <label class="label">Diastolic Value</label>
+            <input class="input" type="text" placeholder="" id="diastolic" />
+          </div>
+        </div> -->
+
+        <!-- <div id="general">
+          <div class="field">
+            <label class="label">Reading Value</label>
+            <input class="input" type="text" placeholder="" id="reading" />
+          </div>
+        </div> -->
+
+        <!-- <div class="buttons is-right">
+          <button class="button is-light" style="text-transform: uppercase" onclick="processForm()">Done</button>
+          <a href="/" class="button is-light" style="text-transform: uppercase">Cancel</a>
+        </div> -->
+      </div>
+    </div>
+
+    <script>
+      function getSelectedCategory() {
+        const readingCategories = [
+          { id: 1, label: "Blood Pressure (BP)" },
+          { id: 2, label: "Weight" },
+          { id: 3, label: "Height" },
+          { id: 4, label: "Body Mass Index - BMI" },
+          { id: 5, label: "Blood Glucose" },
+          { id: 6, label: "Oximetry - Blood Oxygen Levels" },
+          { id: 7, label: "Clinical Synopsis - Notes" },
+        ];
+        let selectedIndex = document.getElementById("categories").selectedIndex;
+        if (selectedIndex !== 0) {
+          document.getElementById("general").style.display = "block";
+          document.getElementById("bp").style.display = "none";
+        } else {
+          document.getElementById("bp").style.display = "block";
+          document.getElementById("general").style.display = "none";
+        }
+      }
+
+      function processForm() {
+        let selectedIndex = document.getElementById("categories").selectedIndex;
+        if(selectedIndex === 0){
+          let systolic = document.getElementById("systolic").value
+          let diastolic = document.getElementById("diastolic").value;
+          console.log(`${systolic} - ${diastolic}`);
+        }else{
+          let reading = document.getElementById("reading").value;
+          console.log(reading);
+        }
+        
+      }
+    </script>
+  </body>
+</html>

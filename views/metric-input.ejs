@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"
+      integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap");
+      body {
+        font-family: "Josefin Sans", sans-serif;
+      }
+      .page-container {
+        width: 380px;
+        height: auto;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+        padding: 24px;
+      }
+      h1,
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .dates:hover {
+        background-color: #00bcd4;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .active {
+        background-color: #00bcd4;
+        color: #ffffff;
+      }
+
+      #bp {
+        margin-bottom: 24px;
+      }
+
+      #general {
+        display: none;
+        margin-bottom: 24px;
+      }
+    </style>
+    <title>mHealth</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-container">
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <!-- <div class="level-item">
+              <a href="/"><i class="fas fa-caret-left"></i> Back</a>
+            </div> -->
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <a href="/reading">
+                <i class="fas fa-times fa-2x"></i>
+              </a>
+              
+            </div>
+          </div>
+        </nav>
+        <div style="margin-bottom: 32px">
+          <h2 class="subtitle is-5">Add Measurement</h2>
+          <h1 class="title">Height</h1>
+        </div>    
+        
+        <form action="">
+          <div class="field">
+            <label class="label">Value</label>
+            <div class="control" style="width: 100px">
+              <input class="input" type="text" id="height">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <!-- <a href="/input-success" class="button is-link">Submit</a> -->
+              <button class="button is-link" onclick="processForm(event)">Submit</button> 
+            </div>
+            <div class="control">
+              <button class="button is-link is-light">Cancel</button>
+            </div>
+          </div>
+        </form>
+        <script>
+            function processForm(event){
+              event.preventDefault();
+              const value = document.getElementById('height').value
+              fetch('http://localhost:3005/vitals', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({title: "height", measurement: value}),
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+
+
+            }
+        </script>
+  </body>
+</html>
