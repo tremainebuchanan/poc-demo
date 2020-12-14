@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" 
+    integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA==" 
+    crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style> 
+        /* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap'); */
+        body{
+            /* font-family: 'Josefin Sans', sans-serif; */
+            background-color: #f4f4f4;
+            color:#707070;
+        }
+        .page-container{
+            width: 380px;
+            height: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            height: auto;
+            padding: 0 18px 18px 18px;
+        }
+        h1,h3{
+            margin-top:0;
+            margin-bottom: 0;
+        }
+        .dates:hover{
+            background-color: #00bcd4;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #00bcd4;
+            color: #ffffff;
+        }
+        .image-frame{
+          margin-top: 12px;
+          margin-bottom: 12px;
+          border-radius: 12px;
+        }
+
+        img{
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
+          display: block;
+        }
+
+        .card{
+          background-color: #bce0fd;
+          color: #707070;
+        }
+        .title,
+        .subtitle{
+          color: #707070;
+        }
+
+    </style>
+    <title>mHealth</title>
+   
+</head>
+<body>
+  
+    <div class="container">
+      <div style="height: 60px; width: 380px; margin: 0 auto; background-color: #2699fb;padding-top: 18px;">
+       <h2 class="subtitle is-6 has-text-centered" style="color:#ffffff">Blood Pressure</h2>
+      </div>
+        <div class="page-container">  
+              
+              <div>
+                  <div style="height: 12px"></div>
+                <h2 class="title is-4" style="margin-bottom: 12px">Last Reading</h2>             
+
+                <div class="card" style="margin-bottom: 24px">
+                    <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 8px; padding-right: 12px;">
+                     <p style="font-size: 13px;margin-bottom: 12px"><%= moment(bp[0].created_on).format('Do MMMM, YYYY') %></p>
+                        <div class="columns" style="margin-bottom:0">
+                            <div class="column">
+                                <i class="fas fa-heartbeat fa-4x"></i>
+                            </div>
+                            <div class="column" style="padding: 0">
+                                <h2 style="font-size: 18px; font-weight: bold;margin:0">Systolic</h2>
+                                <h1 class="title is-2" style="margin-top: 0;"><%= bp[0].measurement_one %></h1>
+                            </div>
+                            <div class="column" style="padding: 0;margin-bottom:0">
+                                <h2 style="font-size: 18px; font-weight: bold;margin:0">Diastolic</h2>
+                                <h1 class="title is-2"><%= bp[0].measurement_two %><span style="font-size: 13px;">mmHG</span></h1>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 0;margin-bottom: 6px;">
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p>Trend <i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></p>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <p>Range:Normal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+                  <a href="/bp-input">
+                    <div class="card" style="margin-bottom: 24px">
+                        <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                          <div class="level" style="margin-bottom: 12px;">
+                            <div class="level-left">
+                              <div class="level-item">
+                                <p>Add Measurement</p>
+                              </div>
+                              
+                            </div>
+                            <div class="level-right">
+                              <div class="level-item">
+                                <i class="fas fa-angle-right"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </a>
+                 
+                  <div>
+                    <h2 class="title is-4">History</h2>
+                    <img src="images/graph.png" alt="" style="margin-bottom: 18px;">
+                    <!-- <div class="tabs is-boxed is-small is-fullwidth">
+                      <ul>
+                        <li class="is-active">
+                          <a>
+                           
+                            <span>Day</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            
+                            <span>Week</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            
+                            <span>Month</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            
+                            <span>Year</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div> -->
+                    <!-- <div class="image-frame">
+                        <img src="images/article_two.png" style="position: relative;" alt="">
+                        
+                      </div> -->
+                      <a href="/bp-input">
+                        <div class="card" style="margin-bottom: 24px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>See all entries</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </a>
+                      <div style="margin-bottom: 12px;">
+                        <h2 class="title is-4">About Blood Pressure</h2>
+                      <p>Blood pressure is the for of blood pushing against the walls of the arteries as your heart pumps blood. It includes two measurements. "Systolic" is your blood pressure. "Diastolic is your blood pressure then the heart is at rest between beats. You usually see blood pressure numbers written with the systolic number above or before the diastolic number (for example, 120/80).
+
+                        </p>
+                        <p>(National Heart, Lung, and Blood Institute)</p>
+                      </div>
+                      <div>
+                        <h2 class="title is-4" >Learn More</h2>
+                    <p>The articles below have been recommended based on your diagnosis to help you learn more about your condition and how to manage it.</p>
+                      </div>
+                    <a href="/articles">
+                      <div class="image-frame">
+                        <img src="images/a_one.png" style="position: relative;" alt="">
+                        <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+                          <h1 class="title is-6" style="color: #ffffff">Understanding Blood Pressure Readings</h1>
+                          <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">This guide will help you to understand your blood pressure readings.</p>
+                        </div>
+                        
+                      </div>
+                    </a>
+                
+                    <div class="image-frame">
+                      <img src="images/a_two.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+                        <h1 class="title is-6" style="color: #ffffff">Monitoring your blood pressure at home</h1>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">The recommended process for taking your blood pressure measurement at home.</p>
+                      </div>
+                      
+                    </div>
+                    <div class="image-frame">
+                      <img src="images/a_three.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+                        <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">Find out everything there is to know about High Blood Pressure.</p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div style="text-align: center;margin-top: 24px;margin-bottom: 24px;">
+                    <a href=""> See all articles </a>
+                  </div>
+                </div>
+              </div>
+           
+            
+            
+            
+            
+
+
+
+        </div>
+    </div>   
+</body>
+</html>

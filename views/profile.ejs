@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" 
+    integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA==" 
+    crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style> 
+        /* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap'); */
+        body{
+            /* font-family: 'Josefin Sans', sans-serif; */
+            background-color: #f4f4f4;
+            color:#707070;
+            height: auto;
+        }
+        .page-container{
+            width: 380px;
+            height: auto;
+            margin: 0 auto;
+            background-color: #ffffff;
+            height: auto;
+            padding: 0 24px 24px 24px;
+        }
+        h1,h3{
+            margin-top:0;
+            margin-bottom: 0;
+        }
+        .dates:hover{
+            background-color: #00bcd4;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #00bcd4;
+            color: #ffffff;
+        }
+        .image-frame{
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+
+        .card{
+          background-color: #bce0fd;
+          color: #707070;
+        }
+        .blue-card{
+            background-color: #2699fb;
+            color: #ffffff;
+        }
+        .subtitle, .title{
+            color: #707070;
+        }
+
+
+    </style>
+    <title>mHealth</title>
+   
+</head>
+<body>
+  
+    <div class="container">
+      <div style="height: 60px; width: 380px; margin: 0 auto; background-color: #2699fb;padding-top: 18px;">
+       <h2 class="subtitle is-6 has-text-centered" style="color:#ffffff">Profile</h2>
+      </div>
+        <div class="page-container">
+            <div style="height: 65px;width: 65px; margin: 0 auto;padding-top: 24px;">
+                <i class="fas fa-user-circle fa-4x" style="color:#2699fb"></i>
+            </div>
+            <div style="margin-top: 32px; margin-bottom: 36px;text-align: center;">
+                <h1 class="subtitle is-4" style="margin-bottom: 0;">Everton Brown</h1>
+                <p style="font-size: 15px;">Kingston, Jamaica</p>
+            </div>
+            <div>
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <h1 class="title is-4">General Information</h1>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <a href="">Edit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Gender</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>Male</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Birthday</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>23 February, 1977</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Height</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>5' 11"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Weight</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>172lbs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Allergies</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>Bees; Wheat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level" style="border-bottom: 1px solid black;">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p>Diagnosis</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p>Diabetes; High Blood Pressure</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="title is-4" style="margin-bottom:12px">Chronic Care Passport</h1>
+                
+                    <div class="card blue-card" style="margin-bottom: 8px;cursor: pointer;" onclick="toggle('med-visits')">
+                        <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                          <div class="level" style="margin-bottom: 12px;">
+                            <div class="level-left">
+                              <div class="level-item">
+                                <p>Medical Visits</p>
+                              </div>
+                              
+                            </div>
+                            <div class="level-right">
+                              <div class="level-item">
+                                <i class="fas fa-angle-right"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
+
+                  <div id="med-visits">
+                    
+                        <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Blood Pressure (mmHg)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Body Mass Index (BMI)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Weight (kg/lbs)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Height (in/cm)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Brief Foot Exam</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Complete Foot Exam</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Eye Exam A/N*</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 24px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Cardiovascular Risk</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    
+                  </div>
+
+                  
+                    <div class="card blue-card" style="margin-bottom: 8px" onclick="toggle('labs')">
+                        <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                          <div class="level" style="margin-bottom: 12px;">
+                            <div class="level-left">
+                              <div class="level-item">
+                                <p>Laboratory</p>
+                              </div>
+                              
+                            </div>
+                            <div class="level-right">
+                              <div class="level-item">
+                                <i class="fas fa-angle-right"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                 
+                      <div id="labs">
+                    
+                        <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Fasting</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>2hrPP</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Hemoglobin A/C</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>HDL</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>LDL</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Tricglyceride</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Urine Microalbumin</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Urine Dipstick</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>ECG A/N*</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>BUN/Creatinine</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Sodium/Potassium</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 24px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Dental Review A/N*</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    
+                  </div>
+
+                 
+                    <div class="card blue-card" style="margin-bottom: 8px;cursor: pointer;" onclick="toggle('edu')">
+                        <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                          <div class="level" style="margin-bottom: 12px;">
+                            <div class="level-left">
+                              <div class="level-item">
+                                <p>Education</p>
+                              </div>
+                              
+                            </div>
+                            <div class="level-right">
+                              <div class="level-item">
+                                <i class="fas fa-angle-right"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div id="edu">
+                    
+                        <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Nutrition Review +/-</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Depression +/-</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Hospitalization (Date)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Patient Education +/-</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Exercise Prescription</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card" style="margin-bottom: 8px">
+                            <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 0px; padding-right: 12px;">
+                              <div class="level" style="margin-bottom: 12px;">
+                                <div class="level-left">
+                                  <div class="level-item">
+                                    <p>Smoking (+/-) / Alcohol (+/-)</p>
+                                  </div>
+                                  
+                                </div>
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <i class="fas fa-angle-right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  
+                
+            </div>
+            
+        </div>
+ 
+    </div>
+    
+    <script>
+        document.getElementById("med-visits").style.display = "none"
+        document.getElementById("labs").style.display = "none"
+        document.getElementById("edu").style.display = "none"
+
+        function toggle(id){
+            var x = document.getElementById(id)
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <!-- <script>
+        const configs = {
+            baseUrl: "https://cdr.code4health.org/rest/openehr/v1",
+            subjectId: "114206069",
+            subjectNameSpace: "jm.gov.nin",
+            ehrId: "1e624288-8cda-4ede-a507-92679ffaf87c",
+            headers: {
+                "Authorization": "Basic NGNjZTVhMDctYmU0ZC00MzE4LWE5NGYtM2I4NDAxODUzYTIwOiQyYSQxMCQ2MTlraQ==",
+                "Cookie": "_2269c=http://10.0.0.203:8080",
+                "Prefer": "return=minimal",
+                "Content-Type": "application/json",
+            }
+        }
+
+        let url = `${configs.baseUrl}/ehr?subject_id=${configs.subjectId}&subject_namespace=${configs.subjectNameSpace}`
+        //console.log(url)
+        fetch(url, {
+            headers: configs.headers
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+        fetch('./users.json')
+        .then(response => response.json())
+        .then(users => {
+            const length = users.length;
+            for(let i = 0; i < length; i++){
+                if(users[i].loggedIn === "true"){
+                    document.getElementById("name").innerText = users[i].firstName
+                }
+            }
+        })
+
+        
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"
+      integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap");
+      body {
+        font-family: "Josefin Sans", sans-serif;
+        background-color: #f4f4f4;
+      }
+      * { box-sizing:border-box; }
+
+      .page-container {
+        width: 380px;
+        height: 800px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 24px;
+      }
+      h1,
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .dates:hover {
+        background-color: #00bcd4;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .active {
+        background-color: #00bcd4;
+        color: #ffffff;
+      }
+
+      #bp {
+        margin-bottom: 24px;
+      }
+
+      #general {
+        display: none;
+        margin-bottom: 24px;
+      }
+
+      
+    </style>
+    <title>mHealth</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-container">
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <!-- <div class="level-item">
+              <a href="/"><i class="fas fa-caret-left"></i> Back</a>
+            </div> -->
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <a href="/bp-details">
+                <i class="fas fa-times fa-2x" style="color: #2699fb;"></i>
+              </a>
+              
+            </div>
+          </div>
+        </nav>
+        <div style="margin-bottom: 32px;text-align: center;margin-top: 80px">
+          <h2 class="subtitle is-5">Add Measurement</h2>
+          <h1 class="title" style="color:#2699fb">Blood Pressure</h1>
+        </div>    
+        
+        <form action="">
+          <div class="field">
+            <label class="label">Systolic</label>
+            <div class="control">
+              <input class="input" type="text" id="sys">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Diastolic</label>
+            <div class="control">
+              <input class="input" type="text" id="dia">
+            </div>
+          </div> 
+
+          <div class="field">
+            <label class="label">Date</label>
+            <div class="control">
+              <input class="input" type="date" id="datePicker">
+            </div>
+          </div> 
+
+          <div class="field">
+            <label class="label">Time</label>
+            <div class="control">
+              <input class="input" type="time" value="09:00">
+            </div>
+          </div> 
+          <div style="width: 70px; margin: 48px auto;">
+            <div class="field is-grouped">
+              <div class="control">
+                <!-- <a href="/input-success" class="button is-link">Submit</a> -->
+                <button class="button is-link" style="text-transform: uppercase;" onclick="processForm(event)">Add</button> 
+              </div>
+              
+            </div>
+          </div>
+        
+        </form>
+        <script>
+          document.getElementById('datePicker').valueAsDate = new Date();
+            function processForm(event){
+              event.preventDefault();
+              const sys = document.getElementById('sys').value
+              const dia = document.getElementById('dia').value
+              fetch('http://localhost:3005/blood_pressure/', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ measurement_one: sys, measurement_two: dia}),
+              })
+              .then(response => response.json())
+              .then(data => {
+                window.location = '/input-success'
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+            //   window.location = '/input-success'
+
+            }
+        </script>
+  </body>
+</html>

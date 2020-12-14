@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" 
+    integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA==" 
+    crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style> 
+        /* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap'); */
+        body{
+            /* font-family: 'Josefin Sans', sans-serif; */
+            background-color: #f4f4f4;
+            color:#707070;
+        }
+        .page-container{
+            width: 380px;
+            height: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            height: auto;
+            padding: 0 24px 24px 24px;
+        }
+        h1,h3{
+            margin-top:0;
+            margin-bottom: 0;
+        }
+        .dates:hover{
+            background-color: #00bcd4;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #00bcd4;
+            color: #ffffff;
+        }
+        .image-frame{
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+
+        .card{
+          background-color: #bce0fd;
+          color: #707070;
+        }
+
+    </style>
+    <title>mHealth</title>
+   
+</head>
+<body>
+  
+    <div class="container">
+      <div style="height: 60px; width: 380px; margin: 0 auto; background-color: #2699fb;padding-top: 18px;">
+       <h2 class="subtitle is-6 has-text-centered" style="color:#ffffff">mHealth Dashboard</h2>
+      </div>
+        <div class="page-container">
+
+             
+              
+              <div>
+                
+                    <h2 class="subtitle is-4">Featured Article</h2>
+                    
+                    <a href="/articles/featured">
+                        <div class="image-frame">
+                            <img src="images/a_one.png" style="position: relative;" alt="">
+                            <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
+                              <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
+                              <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
+                            </div>
+                    </a>
+            
+                      
+                    </div>
+                    <div class="image-frame">
+                      <img src="images/a_two.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
+                        <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
+                      </div>
+                      
+                    </div>
+                    <div class="image-frame">
+                      <img src="images/a_three.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
+                        <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div style="text-align: center;margin-top: 24px;margin-bottom: 24px;">
+                    <a href=""> See all articles </a>
+                  </div>
+                </div>
+              </div>
+           
+            
+            
+            
+            
+
+
+
+        </div>
+    </div>
+    
+
+    <!-- <script>
+        const configs = {
+            baseUrl: "https://cdr.code4health.org/rest/openehr/v1",
+            subjectId: "114206069",
+            subjectNameSpace: "jm.gov.nin",
+            ehrId: "1e624288-8cda-4ede-a507-92679ffaf87c",
+            headers: {
+                "Authorization": "Basic NGNjZTVhMDctYmU0ZC00MzE4LWE5NGYtM2I4NDAxODUzYTIwOiQyYSQxMCQ2MTlraQ==",
+                "Cookie": "_2269c=http://10.0.0.203:8080",
+                "Prefer": "return=minimal",
+                "Content-Type": "application/json",
+            }
+        }
+
+        let url = `${configs.baseUrl}/ehr?subject_id=${configs.subjectId}&subject_namespace=${configs.subjectNameSpace}`
+        //console.log(url)
+        fetch(url, {
+            headers: configs.headers
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+        fetch('./users.json')
+        .then(response => response.json())
+        .then(users => {
+            const length = users.length;
+            for(let i = 0; i < length; i++){
+                if(users[i].loggedIn === "true"){
+                    document.getElementById("name").innerText = users[i].firstName
+                }
+            }
+        })
+
+        
+    </script> -->
+</body>
+</html>

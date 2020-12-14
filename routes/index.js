@@ -2,18 +2,45 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios');
 const mysql = require('mysql');
+const moment = require('moment');
 const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '47vCGe2e!MxX?3ru',
-  database: 'cdr'
+  host: process.env.HOST,
+  user: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE
 });
-/* GET home page. */
+
+router.get('/metrics/new', function(req, res, next){
+  res.render('new-metric');
+})
+
+router.get('/articles', function(req, res, next){
+  res.render('article-featured');
+})
+
+// router.get('/articles/featured', function(req, res, next){
+//   res.render('article-featured')
+// })
+
+router.get('/profile', function(req, res, next){
+  res.render('profile')
+})
+
 router.get('/vitals', function(req, res, next) {
   con.query('SELECT * FROM vitals', (err,rows) => {
     if(err){
       return res.json(err)
     }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });
+  
+});
+
+router.get('/vitals/dashboard', function(req, res, next) {
+  con.query('select id, measurement_one, measurement_two, created_on from bp where created_on = (select max(created_on) from bp)', (err,bp) => {
+    if(err){
+      return res.json(err)
+    }    
     return res.json(JSON.parse(JSON.stringify(rows)));
   });
   
@@ -42,14 +69,162 @@ router.post('/vitals', function(req, res, next) {
   
 });
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-  const query = 'select id, title, measurement, created_on from vitals where created_on = (select max(created_on) from vitals where title = ?)'
-  con.query(query, title, (err,rows) => {
+router.post('/blood_pressure', function(req, res, next) {
+  const reading = req.body
+  con.query('INSERT INTO bp SET ?', reading, (err, response) => {
+    if(err) { return res.json(err) }
+  
+    console.log('Last insert ID:', response.insertId);
+    return res.json({message: "Measurement added"})
+    //res.end()
+  });
+  
+});
+
+router.get('/blood_pressure', function(req, res, next) {
+  con.query('SELECT * FROM bp', (err,rows) => {
     if(err){
       return res.json(err)
     }
     return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.get('/blood_pressure/latest_reading', function(req, res, next) {
+  con.query('select id, measurement_one, measurement_two, created_on from bp where created_on = (select max(created_on) from bp)', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.post('/blood_glucose', function(req, res, next) {
+  const reading = req.body
+  con.query('INSERT INTO bg SET ?', reading, (err, response) => {
+    if(err) { return res.json(err) }
+  
+    console.log('Last insert ID:', response.insertId);
+    res.end()
+  });
+  
+});
+
+router.get('/blood_glucose', function(req, res, next) {
+  con.query('SELECT * FROM bg', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.get('/blood_glucose/latest_reading', function(req, res, next) {
+  con.query('select id, measurement, created_on from bg where created_on = (select max(created_on) from bg)', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.post('/body_mass_index', function(req, res, next) {
+  const reading = req.body
+  con.query('INSERT INTO bmi SET ?', reading, (err, response) => {
+    if(err) { return res.json(err) }
+  
+    console.log('Last insert ID:', response.insertId);
+    res.end()
+  });
+  
+});
+
+router.get('/body_mass_index', function(req, res, next) {
+  con.query('SELECT * FROM bmi', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.get('/body_mass_index/latest_reading', function(req, res, next) {
+  con.query('select id, measurement, created_on from bmi where created_on = (select max(created_on) from bmi)', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.post('/weight', function(req, res, next) {
+  const reading = req.body
+  con.query('INSERT INTO weight SET ?', reading, (err, response) => {
+    if(err) { return res.json(err) }
+  
+    console.log('Last insert ID:', response.insertId);
+    res.end()
+  });
+  
+});
+
+router.get('/weight', function(req, res, next) {
+  con.query('SELECT * FROM weight', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.get('/weight/latest_reading', function(req, res, next) {
+  con.query('select id, measurement, created_on from weight where created_on = (select max(created_on) from weight)', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    return res.json(JSON.parse(JSON.stringify(rows)));
+  });  
+});
+
+router.get('/bp-details', function(req, res, next) {
+  con.query('select id, measurement_one, measurement_two, created_on from bp where created_on = (select max(created_on) from bp)', (err,rows) => {
+    if(err){
+      return res.json(err)
+    }
+    res.render('bp-page', { title: 'Express' , bp: JSON.parse(JSON.stringify(rows)), moment: moment});
+  });
+  // res.render('bp-page', { title: 'Express' });
+});
+
+router.get('/', function(req, res, next) {  
+  con.query('select id, measurement_one, measurement_two, created_on from bp where created_on = (select max(created_on) from bp)', (err,bp) => {
+    if(err){
+      return res.json(err)
+    }
+    con.query('select id, measurement, created_on from bg where created_on = (select max(created_on) from bg)', (err,bg) => {
+      if(err){
+        return res.json(err)
+      }
+      con.query('select id, measurement, created_on from bmi where created_on = (select max(created_on) from bmi)', (err,bmi) => {
+        if(err){
+          return res.json(err)
+        }    
+        con.query('select id, measurement, created_on from weight where created_on = (select max(created_on) from weight)', (err,weight) => {
+          if(err){
+            return res.json(err)
+          }    
+          res.render('index', { title: 'Express' , 
+          bp: JSON.parse(JSON.stringify(bp)), 
+          moment: moment, 
+          bg: JSON.parse(JSON.stringify(bg)),
+          bmi: JSON.parse(JSON.stringify(bmi)),
+          weight: JSON.parse(JSON.stringify(weight))
+          });
+        }); 
+      });    
+      //res.render('index', { title: 'Express' , bp: JSON.parse(JSON.stringify(bp)), moment: moment, bg: JSON.parse(JSON.stringify(bg))});
+    });
+    
   });
 });
 
@@ -57,22 +232,29 @@ router.get('/input', function(req, res, next){
   res.render('metric-input');
 })
 
+router.get('/bp-input', function(req, res, next){
+  res.render('bp-input');
+})
+
 router.get('/input-success', function(req, res, next){
   res.render('metric-input-success');
 })
 
 
-router.get('/reading', function(req, res, next){
-  const readingCategories = [
-    { id: 1, label: 'Blood Pressure (BP)'},
-    { id: 2, label: 'Weight'},
-    { id: 3, label: 'Height'},
-    { id: 4, label: 'Body Mass Index - BMI'},
-    { id: 5, label: 'Blood Glucose'},
-    { id: 6, label: 'Oximetry - Blood Oxygen Levels'}
-]
-  res.render('reading', {title: 'Add Reading', categories: readingCategories});
+router.get('/readings', function(req, res, next){
+  res.render('reading');
 })
+// router.get('/reading', function(req, res, next){
+//   const readingCategories = [
+//     { id: 1, label: 'Blood Pressure (BP)'},
+//     { id: 2, label: 'Weight'},
+//     { id: 3, label: 'Height'},
+//     { id: 4, label: 'Body Mass Index - BMI'},
+//     { id: 5, label: 'Blood Glucose'},
+//     { id: 6, label: 'Oximetry - Blood Oxygen Levels'}
+// ]
+//   res.render('reading', {title: 'Add Reading', categories: readingCategories});
+// })
 
 router.post('/compositions', async function(req, res, next){
   //const fields = getCompsitionTypeFields("blood_glucose")

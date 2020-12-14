@@ -12,14 +12,16 @@
         /* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;600&display=swap'); */
         body{
             /* font-family: 'Josefin Sans', sans-serif; */
+            background-color: #f4f4f4;
+            color:#707070;
         }
         .page-container{
             width: 380px;
             height: 480px;
             margin: 0 auto;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             height: auto;
-            padding: 24px;
+            padding: 0 18px 18px 18px;
         }
         h1,h3{
             margin-top:0;
@@ -37,6 +39,22 @@
         .image-frame{
           margin-top: 12px;
           margin-bottom: 12px;
+          border-radius: 12px;
+        }
+
+        img{
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
+          display: block;
+        }
+
+        .card{
+          background-color: #bce0fd;
+          color: #707070;
+        }
+        .title,
+        .subtitle{
+          color: #707070;
         }
 
     </style>
@@ -44,8 +62,13 @@
    
 </head>
 <body>
+  
     <div class="container">
+      <div style="height: 60px; width: 380px; margin: 0 auto; background-color: #2699fb;padding-top: 18px;">
+       <h2 class="subtitle is-6 has-text-centered" style="color:#ffffff">mHealth Dashboard</h2>
+      </div>
         <div class="page-container">
+          
             <!-- <nav class="level is-mobile">
                 <div class="level-left">
 
@@ -60,43 +83,50 @@
               <div class="level">
                 <div class="level-left">
                   <div class="level-item">
-                    <h1 class="title is-4">Hello, <br> Christopher</h1>    
+                    <h1 class="title is-3" style="color:#707070;margin-top: 24px;">Hello, <br> Everton</h1>    
                   </div>
                 </div>
                 <div class="level-right">
-                  <div class="level-item">
-                    <i class="fas fa-user-circle fa-3x"></i>
-                  </div>
+                  <a href="/profile">
+                    <div class="level-item">
+                      <i class="fas fa-user-circle fa-3x" style="color:#2699fb"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
               <p style="margin-top:-20px;margin-bottom: 24px;">Here's your health summary for today.</p>
               
               <div>
-                <h2 class="subtitle is-4">Summary</h2>
-                <div class="card" style="margin-bottom: 24px">
-                  <div class="card-content">
-                    <div class="level">
-                      <div class="level-left">
-                        <div class="level-item">
-                          <p>Blood Pressure</p>
+                <h2 class="title is-4" style="margin-bottom: 8px"><i class="fas fa-th" style="font-size: 18px;color:#2699fb"></i> Summary</h2>
+                <a href="/bp-details">
+                  <div class="card" style="margin-bottom: 16px;border-radius: 12px;">
+                    <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 8px; padding-right: 12px;">
+                      <div class="level" style="margin-bottom: 12px;">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <p>Blood Pressure</p>
+                          </div>
+                          
                         </div>
-                        
-                      </div>
-                      <div class="level-right">
-                        <div class="level-item">
-                          <i class="fas fa-angle-right"></i>
+                        <div class="level-right">
+                          <div class="level-item">
+                            <i class="fas fa-angle-right" style="color:#2699fb "></i>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div>
-                      <h1 class="subtitle is-2">177/75 <span>mmHG</span></h1>
-                      <p>Last Updated: 2 days ago</p>
+                      <div>
+                        <h1 class="title is-3" 
+                        style="margin-bottom:0;margin-top:48px"><%= bp[0].measurement_one %>/<%= bp[0].measurement_two %> 
+                        <span style="font-size: 14px;font-weight: bold;">mmHG</span></h1>
+                        <p style="font-size:13px">Last Updated: <%= moment(bp[0].created_on).format('DD MMMM, YYYY') %></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="card" style="margin-bottom: 24px;">
-                  <div class="card-content">
-                    <div class="level">
+                </a>
+              
+                <div class="card" style="margin-bottom: 16px;border-radius: 12px;">
+                  <div class="card-content" style="padding-top: 8px; padding-left: 12px; padding-bottom: 8px; padding-right: 12px;">
+                    <div class="level" style="margin-bottom: 12px;">
                       <div class="level-left">
                         <div class="level-item">
                           <p>Blood Glucose</p>
@@ -105,82 +135,88 @@
                       </div>
                       <div class="level-right">
                         <div class="level-item">
-                          <i class="fas fa-angle-right"></i>
+                          <i class="fas fa-angle-right" style="color:#2699fb "></i>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <h1 class="subtitle is-2"> <span style="font-size: 14px;">mg/dl</span></h1>
-                      <p>Last Updated: 2 days ago</p>
+                      <h1 class="title is-3" 
+                      style="margin-bottom:0;margin-top:48px"><%= bg[0].measurement %>
+                      <span style="font-size: 14px;font-weight: bold;">mg/dl</span></h1>
+                      <p style="font-size:13px">Last Updated: <%= moment(bg[0].created_on).format('DD MMMM, YYYY') %></p>
                     </div>
                   </div>
                 </div>
 
-                <div class="columns">
+                <div class="columns" style="margin-bottom: 0;">
                   <div class="column">
-                    <div class="card" style="margin-bottom: 24px;">
-                      <div class="card-content">
-                        <div class="level">
+                    <div class="card" style="margin-bottom: 18px;margin-right: 0;border-radius: 12px;">
+                      <div class="card-content" style="padding-top: 4px; padding-left: 8px; padding-bottom: 4px; padding-right: 8px;">
+                        <div class="level" style="margin-bottom: 12px;">
                           <div class="level-left">
                             <div class="level-item">
-                              <p style="font-size:14px">Blood Pressure</p>
+                              <p>Body Mass Index</p>
                             </div>
                             
                           </div>
                           <div class="level-right">
                             <div class="level-item">
-                              <i class="fas fa-angle-right"></i>
+                              <i class="fas fa-angle-right" style="color:#2699fb "></i>
                             </div>
                           </div>
                         </div>
                         <div>
-                          <p style="font-size: 36px;">21.2</p>
-                          <p style="font-size:12px">Last Updated: <br>2 days ago</p>
+                          <h1 class="title is-3" 
+                          style="margin-bottom:0;margin-top:32px"><%= bmi[0].measurement %>
+                          </h1>
+                          <p style="font-size:13px">Last Updated: <br> <%= moment(bmi[0].created_on).format('DD MMMM, YYYY') %> </p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="column">
-                    <div class="card" style="margin-bottom: 24px;">
-                      <div class="card-content">
-                        <div class="level">
+                    <div class="card" style="margin-bottom: 18px;border-radius: 12px;">
+                      <div class="card-content" style="padding-top: 4px; padding-left: 8px; padding-bottom: 4px; padding-right: 8px;">
+                        <div class="level" style="margin-bottom: 12px;">
                           <div class="level-left">
                             <div class="level-item">
-                              <p style="font-size:14px">Blood Pressure</p>
+                              <p>Weight</p>
                             </div>
                             
                           </div>
                           <div class="level-right">
                             <div class="level-item">
-                              <i class="fas fa-angle-right"></i>
+                              <i class="fas fa-angle-right" style="color:#2699fb "></i>
                             </div>
                           </div>
                         </div>
                         <div>
-                          <p style="font-size: 36px;">21.2</p>
-                          <p style="font-size: 12px">Last Updated: <br>2 days ago</p>
+                          <h1 class="title is-3" 
+                          style="margin-bottom:0;margin-top:32px"><%= weight[0].measurement %>
+                          <span style="font-size: 14px;font-weight: bold;">lbs</span></h1>
+                          <p style="font-size:13px">Last Updated: <br> <%= moment(weight[0].created_on).format('DD MMMM, YYYY') %> </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div style="text-align: center;margin-bottom: 24px;">
-                  <a href=""> See all metrics </a>
+                <div style="text-align: center;margin-bottom: 18px;margin-top: 0;">
+                  <a href=""> See all metrics <i class="fas fa-angle-right" style="color:#2699fb "></i> </a>
                 </div>
 
                 <div>
-                  <h2 class="subtitle is-4">Notifications</h2>
+                  <h2 class="title is-4" style="margin-bottom: 12px;"><i class="fas fa-bell" style="font-size:19px;color:#2699fb"></i> Notifications</h2>
                   <div class="card">
-                      <div class="card-content">
-                        <div class="level">
+                      <div class="card-content" style="padding-top: 4px; padding-left: 16px; padding-bottom: 4px; padding-right: 16px;">
+                        <div class="level" style="margin-bottom: 0;">
                           <div class="level-left">
                             <div class="level-item">
-                              <p><i class="fas fa-heartbeat"></i> Blood Pressure</p>
+                              <p style="font-size: 13px;"><i class="fas fa-heartbeat"></i> Blood Pressure</p>
                             </div>
                           </div>
                           <div class="level-right">
                             <div class="level-item">
-                              <p>Nov. 5</p>
+                              <p style="font-size: 13px;">Nov. 5</p>
                             </div>
                           </div>
                         </div>
@@ -188,39 +224,42 @@
                       </div>                      
                     </div>
                     <div style="text-align: center;margin-top: 24px;margin-bottom: 24px;">
-                      <a href=""> See all notifications </a>
+                      <a href=""> See all 6 notifications <i class="fas fa-angle-right" style="color:#2699fb "></i></a>
                     </div>
                   </div> <!-- End of Notifications-->
                   <div>
-                    <h2 class="subtitle is-4">Recommended Articles</h2>
+                    <h2 class="title is-4" style="margin-bottom: 12px;">Recommended Articles</h2>
                     <p>Based on your health status, we have compiled articles that may help you manage, monitor and learn more about your condition.</p>
+                    <a href="/articles">
+                      <div class="image-frame">
+                        <img src="images/a_one.png" style="position: relative;" alt="">
+                        <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+                          <h1 class="title is-6" style="color: #ffffff">Understanding Blood Pressure Readings</h1>
+                          <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">This guide will help you to understand your blood pressure readings.</p>
+                        </div>
+                        
+                      </div>
+                    </a>
+                
                     <div class="image-frame">
-                      <img src="images/article_three.png" style="position: relative;" alt="">
-                      <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
-                        <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
-                        <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
+                      <img src="images/a_two.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+                        <h1 class="title is-6" style="color: #ffffff">Monitoring your blood pressure at home</h1>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">The recommended process for taking your blood pressure measurement at home.</p>
                       </div>
                       
                     </div>
                     <div class="image-frame">
-                      <img src="images/article_three.png" style="position: relative;" alt="">
-                      <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
+                      <img src="images/a_three.png" style="position: relative;" alt="">
+                      <div style="height: 80px;background-color: #4a4a4a;margin-top: -4px; padding: 8px 12px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
                         <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
-                        <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
-                      </div>
-                      
-                    </div>
-                    <div class="image-frame">
-                      <img src="images/article_three.png" style="position: relative;" alt="">
-                      <div style="height: 80px;background-color: grey;margin-top: -4; padding: 4px">
-                        <h1 class="title is-6" style="color: #ffffff">What to Know About High Blood Pressure</h1>
-                        <p style="margin-top: -16px; color:#ffffff;font-size: 14px;">Find out everything there is to know about High Blood Pressure.</p>
+                        <p style="margin-top: -16px; color:#ffffff;font-size: 13px;">Find out everything there is to know about High Blood Pressure.</p>
                       </div>
                       
                     </div>
                   </div>
                   <div style="text-align: center;margin-top: 24px;margin-bottom: 24px;">
-                    <a href=""> See all articles </a>
+                    <a href="/articles"> See more articles </a>
                   </div>
                 </div>
               </div>
